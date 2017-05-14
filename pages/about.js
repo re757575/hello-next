@@ -1,8 +1,10 @@
 //@ts-check
+import Header from '../components/Header';
 
 const about = () => (
   <div>
-    <p>his is the about page</p>
+    <Header />
+    <p>This is the about page</p>
   </div>
 )
 
