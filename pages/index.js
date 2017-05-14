@@ -1,12 +1,11 @@
 //@ts-check
 import Link from "next/link";
-import Header from "../components/Header";
+import MyLayout from "../components/MyLayout";
 
 const index = () => (
-  <div>
-    <Header />
+  <MyLayout>
     <p>Hello Next.js</p>
-  </div>
+  </MyLayout>
 );
 
 export default index;

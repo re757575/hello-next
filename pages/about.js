@@ -1,11 +1,10 @@
 //@ts-check
-import Header from '../components/Header';
+import MyLayout from "../components/MyLayout";
 
 const about = () => (
-  <div>
-    <Header />
+  <MyLayout>
     <p>This is the about page</p>
-  </div>
+  </MyLayout>
 )
 
 export default about;
