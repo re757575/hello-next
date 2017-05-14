@@ -11,10 +11,9 @@ app
   .then(() => {
     const server = express();
 
-    // 頁面重整 title 會不一樣, 實際上需id取得post資料即可解決問題
     server.get("/p/:id", (req, res) => {
       const actualPage = "/post";
-      const queryParams = { title: req.params.id };
+      const queryParams = { id: req.params.id };
       app.render(req, res, actualPage, queryParams);
     });
 

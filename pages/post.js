@@ -1,16 +1,31 @@
 //@ts-check
+import fetch from "isomorphic-unfetch";
 import MyLayout from "../components/MyLayout.js";
 
 const Content = props => (
   <div>
-    <h1>{props.url.query.title}</h1>
-    <p>This is the blog post content.</p>
+    <h1>{props.movie.Title}</h1>
+    <p>{props.movie.Plot}</p>
+    <img src={props.movie.Poster} />
   </div>
 );
 
-// url prop is only exposed to the page's main component
-export default props => (
+const Post = props => (
   <MyLayout>
-    <Content url={props.url} />
+    <Content {...props} />
   </MyLayout>
 );
+
+// 透過 index page 的連結將會為 client side fetch,
+// 直接在瀏覽器輸入網址為 server side fetch
+Post.getInitialProps = async (context) => {
+  const { id } = context.query;
+  const res = await fetch(`http://www.omdbapi.com/?i=${id}`);
+  const movie = await res.json();
+
+  console.log(`Fetched movie: ${movie.Title}`);
+
+  return { movie };
+};
+
+export default Post;
